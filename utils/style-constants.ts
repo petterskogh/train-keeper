@@ -5,12 +5,13 @@ export const colors = {
   green: '#78c5b4',
   pink: '#ff60ea',
   red: '#D93939',
-  yellow: '#F8FF9B'
+  yellow: '#FFF8D3',
+  yellowDark: '#EBD873',
 }
 
 export const spacing = {
   large: 24,
-  standard: 16,
+  medium: 16,
   small: 8
 }
 
@@ -21,5 +22,6 @@ export const sizes = {
 }
 
 export const borderRadius = {
-  standard: 16
+  small: 8,
+  medium: 16
 }
