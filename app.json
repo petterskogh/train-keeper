@@ -1,0 +1,39 @@
+{
+  "expo": {
+    "name": "halffloor",
+    "slug": "halffloor",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/halffloor-logo-light.png",
+    "userInterfaceStyle": "light",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "updates": {
+      "fallbackToCacheTimeout": 0
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/halffloor-logo-adaptive.png",
+        "backgroundColor": "#FFFFFF"
+      },
+      "package": "com.halffloor.halffloor"
+    },
+    "web": {
+      "favicon": "./assets/halffloor-logo-light.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "98bf55e7-5edc-4760-b46e-b0613ecd64d1"
+      }
+    }
+  }
+}
