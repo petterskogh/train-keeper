@@ -17,8 +17,8 @@ export const spacing = {
 
 export const sizes = {
   fontS: 14,
-  fontM: 18,
-  fontL: 22,
+  fontM: 16,
+  fontL: 20,
 }
 
 export const borderRadius = {

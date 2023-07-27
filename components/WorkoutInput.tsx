@@ -1,10 +1,14 @@
-import { StatusBar, View, StyleSheet, TouchableNativeFeedback } from "react-native";
-import { borderRadius, colors, spacing } from "../utils/style-constants";
+import { View, StyleSheet, TouchableNativeFeedback } from "react-native";
+import { borderRadius, colors, sizes, spacing } from "../utils/style-constants";
 import { TextInput } from "react-native";
 import { useState } from "react";
 import { Text } from "react-native";
 
-const WorkoutInput = () => {
+interface WorkoutInputProps {
+  callback: (workout: string) => void;
+}
+
+const WorkoutInput = ({ callback }: WorkoutInputProps) => {
   const [workout, setWorkout] = useState('');
 
   return (
@@ -15,10 +19,10 @@ const WorkoutInput = () => {
         value={ workout }
         style={ styles.workoutInput } />
       <TouchableNativeFeedback
-        onPress={ () => console.log('pressed') }
+        onPress={ () => callback(workout) }
         background={ TouchableNativeFeedback.Ripple(colors.yellow, false) }>
           <View style={ styles.addWorkoutButton }>
-            <Text>Add</Text>
+            <Text style={ styles.buttonText }>Lägg till</Text>
           </View>
       </TouchableNativeFeedback>
     </View>
@@ -28,6 +32,7 @@ const WorkoutInput = () => {
 const styles = StyleSheet.create({
   workoutInput: {
     flex: 1,
+    fontSize: sizes.fontM,
     borderWidth: 1,
     borderColor: colors.gray,
     paddingHorizontal: spacing.medium,
@@ -40,6 +45,9 @@ const styles = StyleSheet.create({
     paddingVertical: spacing.small,
     justifyContent: 'center',
     borderRadius: borderRadius.small,
+  },
+  buttonText: {
+    fontSize: sizes.fontM,
   },
   workoutInputContainer: {
     flexDirection: 'row',

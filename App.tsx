@@ -1,12 +1,19 @@
-import { StatusBar, View, StyleSheet } from "react-native";
-import { borderRadius, colors, spacing } from "./utils/style-constants";
-import WorkoutInput from "./components/WorkoutInput";
+import { StatusBar, View, StyleSheet, Text } from "react-native";
+import { colors, spacing } from "./utils/style-constants";
+import { useState } from "react";
+import Workouts from "./views/Workouts";
+import Workout from "./views/Workout";
 
 const App = () => {
+  const [activeWorkoutKey, setActiveWorkoutKey] = useState<string>('');
+
   return (
     <View style={ styles.container }>
       <StatusBar barStyle="default" />
-      <WorkoutInput />
+      { activeWorkoutKey !== undefined && activeWorkoutKey === '' ?
+          <Workouts chooseWorkoutCallback={ setActiveWorkoutKey } /> 
+          : <Workout key={ activeWorkoutKey } /> 
+      }
     </View>
   );
 }
@@ -17,25 +24,6 @@ const styles = StyleSheet.create({
     backgroundColor: colors.yellow,
     paddingHorizontal: spacing.large,
     paddingTop: spacing.large,
-  },
-  workoutInput: {
-    flex: 1,
-    borderWidth: 1,
-    borderColor: colors.gray,
-    paddingHorizontal: spacing.medium,
-    paddingVertical: spacing.small,
-    borderRadius: borderRadius.small,
-  },
-  addWorkoutButton: {
-    backgroundColor: '#DABC1C',
-    paddingHorizontal: spacing.medium,
-    paddingVertical: spacing.small,
-    justifyContent: 'center',
-    borderRadius: borderRadius.small,
-  },
-  workoutInputContainer: {
-    flexDirection: 'row',
-    columnGap: spacing.small,
   }
 });
 
