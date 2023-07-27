@@ -1,15 +1,16 @@
 import { Text, TouchableNativeFeedback, StyleSheet, View } from "react-native";
 import { borderRadius, colors, sizes, spacing } from "../utils/style-constants";
+import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 
 interface WorkoutLinkProps {
   workout: WorkoutRef;
-  chooseWorkoutCallback: (workout: string) => void;
   removeWorkoutCallback: (workout: string) => void;
+  navigation: NativeStackNavigationProp<RootStackParamList, "Home", undefined>;
 }
 
-const WorkoutLink = ({ workout, chooseWorkoutCallback, removeWorkoutCallback }: WorkoutLinkProps) => {
+const WorkoutLink = ({ workout, removeWorkoutCallback, navigation }: WorkoutLinkProps) => {
   return (
-    <TouchableNativeFeedback onPress={ () => chooseWorkoutCallback(workout.key) }>
+    <TouchableNativeFeedback onPress={ () => navigation.navigate('Workout', { key: workout.key }) }>
       <View style={ styles.workoutLink }>
         <Text style={ styles.workoutLinkText }>
           { workout.name }

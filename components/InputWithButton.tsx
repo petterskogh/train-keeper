@@ -4,25 +4,27 @@ import { TextInput } from "react-native";
 import { useState } from "react";
 import { Text } from "react-native";
 
-interface WorkoutInputProps {
-  callback: (workout: string) => void;
+interface Props {
+  buttonCallback: (inputValue: string) => void;
+  buttonText: string;
+  placeholder: string;
 }
 
-const WorkoutInput = ({ callback }: WorkoutInputProps) => {
-  const [workout, setWorkout] = useState('');
+const InputWithButton = ({ buttonCallback, buttonText, placeholder }: Props) => {
+  const [inputValue, setInputValue] = useState('');
 
   return (
-    <View style={ styles.workoutInputContainer }>
+    <View style={ styles.container }>
       <TextInput 
-        placeholder="Axlar och mage" 
-        onChangeText={ text => setWorkout(text) }
-        value={ workout }
-        style={ styles.workoutInput } />
+        placeholder={ placeholder }
+        onChangeText={ text => setInputValue(text) }
+        value={ inputValue }
+        style={ styles.input } />
       <TouchableNativeFeedback
-        onPress={ () => callback(workout) }
+        onPress={ () => buttonCallback(inputValue) }
         background={ TouchableNativeFeedback.Ripple(colors.yellow, false) }>
-          <View style={ styles.addWorkoutButton }>
-            <Text style={ styles.buttonText }>Lägg till</Text>
+          <View style={ styles.button }>
+            <Text style={ styles.buttonText }>{ buttonText }</Text>
           </View>
       </TouchableNativeFeedback>
     </View>
@@ -30,7 +32,11 @@ const WorkoutInput = ({ callback }: WorkoutInputProps) => {
 }
 
 const styles = StyleSheet.create({
-  workoutInput: {
+  container: {
+    flexDirection: 'row',
+    columnGap: spacing.small,
+  },
+  input: {
     flex: 1,
     fontSize: sizes.fontM,
     borderWidth: 1,
@@ -39,7 +45,7 @@ const styles = StyleSheet.create({
     paddingVertical: spacing.small,
     borderRadius: borderRadius.small,
   },
-  addWorkoutButton: {
+  button: {
     backgroundColor: colors.yellowDark,
     paddingHorizontal: spacing.medium,
     paddingVertical: spacing.small,
@@ -48,11 +54,7 @@ const styles = StyleSheet.create({
   },
   buttonText: {
     fontSize: sizes.fontM,
-  },
-  workoutInputContainer: {
-    flexDirection: 'row',
-    columnGap: spacing.small,
   }
 });
 
-export default WorkoutInput;
+export default InputWithButton;
